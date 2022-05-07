@@ -44,29 +44,53 @@ The dataset to be used for this project is a US airline passenger satisfaction s
 
 
 1	id	(Numeric)
+
 2	satisfaction_v2	(Character)
+
 3	Gender	(Character)
+
 4	Customer Type	(Character)
+
 5	Age	(Numeric)
+
 6	Type of Travel	(Character)
+
 7	Class	(Character)
+
 8	Flight Distance	(Numeric)
+
 9	Seat comfort	(Numeric)
+
 10	Departure/Arrival time convenient	(Numeric)
+
 11	Food and drink	(Numeric)
+
 12	Gate location	(Numeric)
+
 13	Inflight wifi service	(Numeric)
+
 14	Inflight Entertainment	(Numeric)
+
 15	Online support	(Numeric)
+
 16	Ease of Online Booking	(Numeric)
+
 17	On-board service	(Numeric)
+
 18	Leg room service	(Numeric)
+
 19	Baggage handling	(Numeric)
+
 20	Checkin service	(Numeric)
+
 21	Cleanliness	(Numeric)
+
 22	Online boarding	(Numeric)
+
 23	Departure Delay in minutes	(Numeric)
+
 24	Arrival Delay in minutes	(Numeric)
+
 
 Exploratory Data Analysis & Data Pre-Processing
 The first step of the data pre-processing includes loading the dataset on to R program and conducting an Exploratory Data Analysis (EDA) on the dataset. This includes checking the structure of the variables in the dataset to understand the types of processes that can be conducted on the dataset to further clean it. To conduct the EDA and visualize it dataexplorer and ggplot2 library was imported to visualize the data better. 
