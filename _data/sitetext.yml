@@ -29,7 +29,8 @@ en: &DEFAULT_EN
     section: portfolio
     closebutton: "Close Project"
     
-  
+ 
+ 
   services:
     title: "About DhiDataAnalyst"
     text: "DhiDataAnalyst is the data analytics and ML project portfolio of Sham Naseer. 'Dhi' is an abreviation of the term Dhivehi, which is a reference to the Maldives. As a proud Maldivian, I wear this badge on my profile as a dedication to my home country."
