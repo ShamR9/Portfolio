@@ -48,21 +48,32 @@ en: &DEFAULT_EN
     text: "Hello & thank you for visiting my portfolio."
     subtext: Thank you for visiting my portfolio and your interest. Here is a little bit about me.
     section: services
-    people:
-      - name: "Griffith University"
-        role: "Bachelor of Government and international relations"
-        image: assets/img/Griffith.png
-            
-      - name: "Sham Naseer"
-        role: "Data Analyst / International Liaison"
-        image: assets/img/team/4.jpg
-        social:
-          - url: https://twitter.com/shamr9
-            icon: fab fa-twitter
-          - url: https://facebook.com/shamr9
-            icon: fab fa-facebook-f
-          - url: https://linkedin.com/in/sham-naseer-b95866140/
-            icon: fab fa-linkedin-in
+      - title: "Griffith University"
+        desc: "Bachelor of Government and international relations (2017)"
+        icon: assets/img/Griffith.png #find more at https://fontawesome.com/icons
+      - title: "Sham Naseer"
+        desc: "Data Analyst / International Liaison"
+        icon: assets/img/team/4.jpg
+      - title: "Asia Pacific University of Technology"
+        desc: "Masters in Data Science and Business Analytics (2022)"
+        icon: assets/img/APU.png
+    
+    
+ #   people:
+  #    - name: "Griffith University"
+   #     role: "Bachelor of Government and international relations"
+    #    image: assets/img/Griffith.png
+     #       
+ #     - name: "Sham Naseer"
+  #      role: "Data Analyst / International Liaison"
+   #     image: assets/img/team/4.jpg
+    #    social:
+     #     - url: https://twitter.com/shamr9
+      #      icon: fab fa-twitter
+       #   - url: https://facebook.com/shamr9
+        #    icon: fab fa-facebook-f
+         # - url: https://linkedin.com/in/sham-naseer-b95866140/
+          #  icon: fab fa-linkedin-in
             
       - name: "Asia Pacific University of Technology"
         role: "Masters in Data Science and Business Analytics"
