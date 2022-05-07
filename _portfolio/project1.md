@@ -9,7 +9,7 @@ caption:
   subtitle: A Machine Learning Project to predict customer satisfaction for flight customers.
   thumbnail: assets/img/portfolio/Plane.jpg
 ---
-# Introduction
+### Introduction
 
 Air travel has been, without a doubt, one of the biggest contributors to the world’s globalisation prospects in recent years. Not only did it revolutionise warfare, but it has also revolutionised transport and travel and given rise to multi-billion-dollar companies that employee millions of people. However, the recent and still ongoing Covid-19 pandemic has threatened this multi-billion-dollar industry due to the abrupt and sudden disruption to the way the world operates almost overnight. With these challenges, many airlines are now facing an uphill challenge to restore their previous levels of sales and compete in a depleted market against other airlines to carry the few passengers that are flying after the pandemic. When competing with multiple other companies providing the same services, the only way to make your mark is to have the backing and support of your customers. To ensure that this is the case, airlines need to ensure that customers are satisfied with the services being provided to them on their journey. 
 For this reason, investment in data analytics has become a strong recommendation from various experts in the field. This study also aims to address this issue by using machine learning to identify which customers are more likely to be satisfied based on various indicators and experiences by the passengers themselves and which among them are more likely to be dissatisfied by the services. Modelling after a US airline passenger satisfaction survey conducted in 2015(John, 2016), this paper will implement three machine learning models of varying degrees of complexity starting with a Naïve Bayes Classifier, Decision Tree, and lastly an Artificial Neural Network. After the tuning and implementation of the model, the paper will evaluate the performance of these three models against each other based on their accuracy, sensitivity, specificity, f measure, Receiver operating characteristic (ROC) curve and Area Under the Curve (AUC). 
@@ -35,10 +35,10 @@ o	This aspect of the paper will compare the best model created in this paper to 
 -	Recommendations for the future
 o	The recommendations will include areas to improve on future implementations as well as recommendations for the businesses to improve customer satisfaction.
 
-## Scope
+# Scope
 Due to the large dataset available for the problem at hand, the training time for the model will be unrealistically high for a study of this magnitude, especially when doing k-fold cross validation on each model including complex models such as Artificial Neural Networks and tuning each model. Hence, to ensure that the training time for models is realistic, a sample from the dataset will be taken to train and test the model.
 
-# Methodology
+### Methodology
 One of the most important steps to implement a Machine Learning algorithm for prediction is to outline the exact methods that will be used for the process. This section will explore the dataset that will be used for this purpose including it’s features and size followed by the description of the data pre-processing techniques and Machine Learning Algorithms that will be used including the specific libraries and why these algorithms were chosen. Lastly, we will explore the evaluation metrics that will be used to assess the performance of the three different models. 
 The dataset to be used for this project is a US airline passenger satisfaction survey conducted in 2015 (John, 2016). This survey has a total of 129,880 observations. Due to the large size of the observations, this dataset is ideal for modelling Machine Learning algorithms as it will have sufficient data for the model to train and validate the model. The dataset contains 24 variables including the ID variable, which is a unique ID for each passenger that took part in the survey, hence will be redundant for any ML modelling. Majority of the survey variables are numeric variables with 5 string variables in the dataset. The details of all variables including the label and data type can be found in the table below. 
 
@@ -80,22 +80,22 @@ After the EDA has been conducted the pre-processing of data begins. To pre-proce
 
 To keeping consistency among all the algorithms being evaluated, all the algorithms will be executed through the caret library with the same control (k-fold cross validation) function. Caret library is machine learning library for R programming language that can execute various machine learning algorithms with the help of external machine learning libraries (Prabhakaran, 2018). Caret also has an inbuilt trainControl function that helps to set parameters for cross validation and tuneLength parameter that helps to set tuning parameters. The trainControl function of all the algorithms will be set to 10 fold repeated cross validation with 5 repeats. The search parameter within trainControl which searches for tuning parameters within the algorithm will be set to random as this will check a more diverse range of values to tune the algorithm. 
 
-### Naïve Bayes
+# Naïve Bayes
 
 The Naïve Bayes algorithm is the most basic model being implemented in this study and the algorithm for the Naïve Bayes implementation will be loaded from the klaR library as this library supports the implementation of the algorithm from the caret library. The hyperparameters that need to be tuned in Naïve Bayes include the Laplacian correction factor, Usekernel parameter that chooses between gaussian and nonparametric distribution and adjust or the bandwidth adjustment parameter.
 
-### Decision Trees
+# Decision Trees
 
 The library to be used for the decision tree modelling is the ‘rPart” library. The tuning length for the model is set for 10 with the only tuning parameter for the model being the complexity parameter cp which will be randomly explored during the model tuning phase. 
 Artificial Neural Network
 The library for the neural network modelling will be the nnet library. The tuning parameters for the ANN model will be the hidden layers parameter and the  weight decay parameter. The hidden layers parameter tunes the model on the number of layers in the hidden layer of the neural net.
 
-### Evaluation Methods
+# Evaluation Methods
 
 To evaluate the models, various aspects of the model will be explored. The most basic evaluation method do be used is the accuracy metric which simply outputs the percentage of the correct predictions from the total number of predictions. However, the accuracy measure may prove to be a bit misleading as it can output more true positives compared to true negatives if it contributes to the accuracy metric to become larger. Hence along with the accuracy, the sensitivity and specificity metric will also be used to compare the percentage of true positives and true negatives. As it is difficult to compare the two specificity and sensitivity metric objectively, the F-measure will be used to compare it. However, as the dataset has already been balanced for this particular dataset, it is unlikely for the model to be more biased towards one class over the other (Brownlee 2020). 
 The final evaluation metric to be used for this study is the Receiver Operating Characteristics (ROC) Curve and the Area Under the receiver operating characteristics Curve (AUC). The ROC is a probability curve that displays the false positive rate against the false negative rate at various probability thresholds (Narkhede, 2018). The AUC, utilising the ROC outputs the measure of separability of the classifier. Hence, the higher the AUC the better the classifier, which will be a metric used to measure the best model in this study. 
 
-# Data Preparation
+### Data Preparation
 
 ## Initial EDA
 
@@ -106,10 +106,10 @@ library(mice)
 library(VIM)
 library(missForest)
 ```
+
 The Data-preparation begins by importing data cleaning libraries such as dplyr, mice, VIM and missForest as well as data exploration library DataExplorer to understand the data better. 
 
 ```R
-'reading data'
 
 df <- read.csv ('Full_DS.csv', header=T) 
 
@@ -118,10 +118,60 @@ str(df)
 summary(df)
 ```
 
+After importing the libraries, the working directory is set to the folder where the dataset is located. This allows for easier reading of the dataset. The dataset is a csv file hence, read.csv command is used to load the dataset and is assigned to the variable df. 
 
+To check if the dataset was loaded correctly, the data set is viewed through the view command. Followed by that, the structure and summary of the data is viewed to check the format and structure of the data including important summaries such as frequency, averages and standard errors of the variables. 
 
+The structure of the data confirms the previous description of the dataset highlighted in the methodology section of this paper including number of observations and variables. However, as the dataset imports non-numeric variables as character values, this needs to be converted into factor variables to better understand the structure of the data including the number of levels in these variables to allow for dummification in variables where it is needed. 
 
+The summary of dataset reveals important details of the dataset especially for the numeric variables including the minimum and maximum values, mean, median as well as the quadrants. For character variables the summary function reveals the number of observations as well as the class of the variables.
 
+```R
+df$Gender = factor(df$Gender)
+df$Customer.Type = factor(df$Customer.Type)
+df$Type.of.Travel = factor(df$Type.of.Travel)
+df$Class = factor(df$Class)
+df$satisfaction = factor(df$satisfaction)
+
+str(df)
+
+levels(df$Gender)
+levels(df$Customer.Type)
+levels(df$Type.of.Travel)
+levels(df$Class)
+levels(df$satisfaction)
+```
+All the character variables in the dataset are converted to factor variables using the factor command. As these values are stored back in the dataset, the structure of dataset is checked again through the str function. To further analyze the factors to check for consistency of the data, the levels of the factor variables are also checked to assess if missing values are classified as a level. 
+
+![alt text](https://github.com/ShamR9/DataScience/blob/main/FlightSatisfaction/Images/1.png "Factorised data")
+
+After factorization is completed, all the character variables can be observed as factors with either 2 or 3 levels in each variable.
+
+## Pre-Processing
+
+```R
+budf <-df
+
+df <- mutate_all(df, na_if, "")
+
+plot_missing(df)
+```
+
+Before moving further with imputing missing data, a backup of the dataset is created to ensure that if dataset needs to be reverted to its original form, the backup will be available. After backing up, the dataset is mutated to convert blank values to na values to ensure that no values are missed.
+
+```R
+imputed_df <- mice(df, m=3)
+Final_imputed_df <- complete (imputed_df)
+
+#Check the imputed DF for missing values
+plot_missing(Final_imputed_df)
+```
+
+To impute the missing values for this project the MICE library is used with the m value (Number of multiple imputations) set for 3. After the mice imputation is initialized the complete function is used to fill in the missing data and return the completed data. After imputation is completed the missing value plot is once again plotted to check the new imputed data for missing values 
+
+![alt text](https://github.com/ShamR9/DataScience/blob/main/FlightSatisfaction/Images/2.png "missing data")
+
+There are no missing data after data has been imputed. 
 
 {:.list-inline}
 - Date: December 2021
