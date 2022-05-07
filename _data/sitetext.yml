@@ -102,6 +102,10 @@ en: &DEFAULT_EN
     subtext: Thank you for visiting my portfolio and your interest. Here is a little bit about me.
     section: team
     people:
+      - name: "Griffith University"
+        role: "Bachelor of Government and international relations"
+        image: assets/img/Griffith.png
+            
       - name: "Sham Naseer"
         role: "Data Analyst / International Liaison"
         image: assets/img/team/4.jpg
@@ -112,6 +116,11 @@ en: &DEFAULT_EN
             icon: fab fa-facebook-f
           - url: https://linkedin.com/in/sham-naseer-b95866140/
             icon: fab fa-linkedin-in
+            
+      - name: "Asia Pacific University of Technology"
+        role: "Masters in Data Science and Business Analytics"
+        image: assets/img/AOU.png
+
 
 
   contact:
