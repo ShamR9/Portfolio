@@ -300,6 +300,131 @@ When the model is implemented, the model is tuned based on all possible combinat
 
 When the model is plotted, it displays the outcome of the tuning based on whether the usekernel was Gaussian on Nonparametric. It shows that once again the best performing model was Nonparametric model. It also shows that the Laplace Correction has no influence on the accuracy of the model with the bandwitdth adjustment having a significant influence on the model in nonparametric model as it increases the accuracy as the value  is increased from 0.5 to 2. However, the model then experience a decrease in the accuracy after 2.0. 
 
+# Decision Trees
+
+The second model that will be evaluated using the pre-processed data will be the decision tree dataset. 
+
+```R
+library(caTools)
+suppressMessages(library(rattle))
+library(caret)
+
+df <- training_set
+```
+
+To implement the Decision Trees Model, the caret library along with rattle library loaded in suppressmessages command to visualize the decision tree efficiently. Followed by this the balanced dataframe will be once again renamed to df before modelling starts.
+
+```R
+control <- trainControl(method="repeatedcv", number=10, repeats=5, search="random")
+
+flight.tree = train(satisfaction_satisfied ~ ., 
+                    data=df, 
+                    method="rpart", 
+                    trControl = control,
+                    tuneLength=10)
+```
+
+As already described in the first Naïve Bayes model, the same control parameters are used for training this model as well to ensure that all models are evaluated at the same level.
+To model the decision tree, the train function from caret library is called and the dependent variable from the data frame that was normalized for modelling (df) is selected. The data is specified as df. As the model selected is a decision tree Recursive Partitioning and Regression Trees (rpart) is selected as the method of the model. The trControl parameter is set for the validation and tuning parameters that was set in the previous step. Lastly the tune length is set at 10 ensuring that 10 different CP values will be selected at random to select the best value. 
+
+```R
+flight.tree
+
+confusionMatrix(flight.tree)
+```
+
+After the training is complete, the model evaluation is conducted by displaying a summary of the tuning and validation on the model as well as displaying the confusion matrix. The confusion matrix is displayed using the Caret library.
+
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/8.png "Logo Title Text 1")
+
+When the model is called it displays the summary of the evaluation including the number of samples that were used in modelling (112856), using 23 predictors to predict 2 classes. Furthermore, it also displays the sample size of the splits used when modelling using kfold validation with each kfold validation repeated 5 times and displaying the average for each of the 10 CP Values. The best CP Value is chosen based on the accuracy of the model. Although in table form with various numbers, it is difficult to interpret the CP Value and accuracy trend this will be visualized in the next step. 
+
+When looking at the confusion matrix, as this was displayed using the model, it shows the percentages which makes it easier to interpret the matrix. As the dataset was perfectly balanced (50/50 for each class), doubling the True Positive and True Negative values provide the sensitivity and specificity values respectively. The model has a 91.94% accuracy with 0.92 sensitivity value and 0.918 specificity value. 
+
+```R
+fancyRpartPlot(flight.tree$finalModel)
+
+plot(flight.tree)
+```
+
+To visualize the model, firstly the model is plotted to analyse the trends associated different CP values and accuracy. Furthermore fancyRpartPlot from rattle is used to visualize the final model from the flight.tree model. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/9.png "Logo Title Text 1")
+
+The model plot shows how the algorithm derived the complexity parameter 0.00197 as it shows that, it was the value with the highest accuracy with the accuracy dropping on either side of that value. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/10.png "Logo Title Text 1")
+
+Visualization of the Decision Tree shows the different branches the algorithm takes to reach each of its conclusion.
+
+# Artificial Neural Network
+
+The same dataset used for the previous two models was also used to model the Artificial Neural Network (ANN) model in the same Caret library using the nnet library as the method.
+
+```R
+library(caTools)
+library (nnet)
+
+control <- trainControl(method="repeatedcv", number=10, repeats=5, search="random")
+
+ann <- train(satisfaction_satisfied ~., 
+             data = df, 
+             method = "nnet", 
+             trControl = control)
+
+ann
+plot(ann)
+```
+
+After loading the dataset and libraries the indices from the dataset is removed and the dependent variable is converted to a 2 level factor to allow for classification modeling. 
+
+To model the ANN, the same control measures as previous models were used to keep consistency. After training the model it is saved in variable ann which is called after training is complete to assess the performance of the model. The model is also plotted to visualize the result of the model 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/11.png "Logo Title Text 1")
+
+As seen, in the summary, using accuracy as the metric to identify the optimal model, three different values were randomly chosen for size and decay values with varying degrees of accuracy for each model. Hence another tuning iteration will be implemented with tuning length set as 10 to ensure that more variables are tried and tested to identify the best parameters. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/12.png "Logo Title Text 1")
+
+The visualization of the model shows that there is a direct correlation between accuracy and the number of hidden units. However, it must also be noted that this also has varying weight decay values. Hence more tuning is needed to identify the best model.
+
+```R
+control <- trainControl(method="repeatedcv", number=10, repeats=5, search="random")
+
+ann <- train(satisfaction_satisfied ~., 
+             data = df, 
+             method = "nnet", 
+             trControl = control,
+             tuneLength = 10)
+```
+
+For the final tuning of the ANN model, the same cross validation parameters are used, however, tuneLength parameter is set to 10 which randomly chooses 10 different values for size and decay variables and combines them to find the accuracies to identify the optimal model. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/13.png "Logo Title Text 1")
+
+Using this technique the model was evaluated to find the best parameters. The best performing model from the different parameters was the model with 16 hidden layers and decay value of 0.45. This model was further plotted to check for any further trends. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/14.png "Logo Title Text 1")
+
+The plot shows that the model is highly volatile and varies with both hidden units and weight of decay. The plot confirms the highest accuracy was obtained with 16 hidden units and 0.45 set as weight decay.
+
+```R
+install.packages('NeuralNetTools')  
+library(NeuralNetTools)  
+plotnet(ann, alpha = 0.6)  
+```
+
+To further display the structure of the Neural Net, it is visualized using the NeuralNetTools showing the weights from each variable to the hidden layers and from hidden layers to the final classification. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/15.png "Logo Title Text 1")
+
+The final step was saving the model to be loaded again to do the final evaluation with the test dataset that was created during the data-preprocessing step. 
+
+### Evaluation
+
+
+
 {:.list-inline}
 - Date: December 2021
 - Assignment: Applied Machine Learning (Masters in Data Science and Business Analytics)
