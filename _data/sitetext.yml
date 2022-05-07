@@ -32,7 +32,7 @@ en: &DEFAULT_EN
   
   services:
     title: "About DhiDataAnalyst"
-    text: "DhiDataAnalyst is the data analytics and ML project portfolio of Sham Naseer. 'Dhi' is an abreviation of the term Dhivehi, which is a reference to the Maldives. As a proud Maldivian, I wear this badge on my profile as a dedication to my home country"
+    text: "DhiDataAnalyst is the data analytics and ML project portfolio of Sham Naseer. 'Dhi' is an abreviation of the term Dhivehi, which is a reference to the Maldives. As a proud Maldivian, I wear this badge on my profile as a dedication to my home country."
     section: services
 
         
@@ -55,34 +55,44 @@ en: &DEFAULT_EN
 
   timeline:
     title: "Timeline"
-    text: "Lorem ipsum timeline"
+    text: "Timeline of events"
     section: timeline
     # left is the default
     #start_align: "left"
     events:
-      - title: "Our Humble Beginnings"
-        year: "2009-2011"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
-        image: assets/img/timeline/1.jpg
+      - title: "School"
+        year: "2001-2013"
+        desc: "I began my educational journey in an isolated southern Island in Maldives, Fuvahmulah in the early 2000s. In 8th grade I made the move that so many Maldivians make to the Capital Male' where I completed my O'Level and A level"
+        image: assets/img/timeline/FS.jpg
         alt:
-      - title: "An Agency is Born"
-        year: "March 2011"
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
-        image: assets/img/timeline/2.jpg
+      - title: "First Job"
+        year: "2013-2015"
+        desc: "Immediately after graduation, I decided to take a gap year to work prior to proceeding with my degree and was lucky enough to have gotten a job as an International liaison at the People's Majlis, the parliament of Maldives where I worked with parliamentarians and foreign dignitaries, which is where I was inspired to choose International Relations as my degree path"
+        image: assets/img/timeline/Majlis.jpg
         alt:
-      - title: "Jekyll Theme is created"
-        year: "2019"
-        desc: "Ravi Riley converted Agency, a Bootstrap-based theme, into a Jekyll theme. The Jekyll theme can be installed as a Ruby gem, or remotely. For more information, visit the documentation."
-        image: assets/img/timeline/3.jpg
+      - title: "Bachelors Degree"
+        year: "2015-2017"
+        desc: "As I was inspired to study International Relations, the Australia Awards Program was the perfect opportunity for me to pursue my degree in Australia. I was lucky to have been chosen among the scholars from Maldives in 2015, and will forever be grateful for the opportunity which has changed my life for the better"
+        image: assets/img/timeline/Griffith.jpg
         alt: image alt text
-      - title: "Title"
-        year: "2009-2011"
-        desc: "Your description here, **Markdown** is fully supported."
-        image: assets/img/timeline/4.jpg
+      - title: "Graduate Job"
+        year: "2018-Present"
+        desc: "Upon my return from Australia, I had the opportunity to apply and be accepted as an analyst for the Maldives Police Service with International Liaison responsibilities as well. This was my first exposure to data analysis as I spent my time analysing and interpreting data in law enforcement, which tested my ability to apply business logic to law enforcement."
+        image: assets/img/timeline/MPS.jpg
         alt:
+      - title: "Covid Pandemic"
+        year: "2020-2022"
+        desc: "The Covid-19 Pandemic forced me to change my work habits and schedule just like many others, and it was during this transition that I discovered, Udemy and Coursera where I took my first Data Science programs including the Google Data Analytics Certification."
+        image: assets/img/timeline/Covid.jpg
+        alt:
+      - title: "Masters Degree"
+        year: "2021-2022"
+        desc: "After completing numerous coursera and udemy programs, I decided to pursue my masters program at Asia Pacific University of Technology and Innovation which allowed an individual such as me without prior background in the field to pursue a data science masters program."
+        image: assets/img/timeline/APU.jpg
+        alt: 
         # you can enforce the alignment
         align: right
-    end: "Be Part <br> of Our <br> Story!"
+    end: "Lets see what the future holds!"
 
 
   clients:
