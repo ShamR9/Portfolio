@@ -31,31 +31,33 @@ en: &DEFAULT_EN
     
   
   services:
-    title: "HELLO. MY NAME IS SHAM NASEER!"
-    text: "Hello & thank you for visiting my portfolio."
+    title: "Services"
+    text: "Lorem ipsum"
     section: services
-      - title: "Griffith University"
-        desc: "Bachelor of Government and international relations (2017)"
-        icon: assets/img/Griffith.png #find more at https://fontawesome.com/icons
-      - title: "Sham Naseer"
-        desc: "Data Analyst / International Liaison"
-        icon: assets/img/team/4.jpg
-      - title: "Asia Pacific University of Technology"
-        desc: "Masters in Data Science and Business Analytics (2022)"
-        icon: assets/img/APU.png
-   # title: "Services"
-   # text: "Lorem ipsum"
-   # section: services
-   # list:
-    #  - title: "E-Commerce"
-    #    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
-    #    icon: fas fa-shopping-cart #find more at https://fontawesome.com/icons
-    #  - title: "Responsive Design"
-    #    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
-    #    icon: fas fa-laptop
-    #  - title: "[Markdown](https://en.wikipedia.org/wiki/Markdown)"
-    #    desc: "Your description here, full **Markdown** support"
-    #    icon: fab fa-markdown
+    list:
+      - title: "E-Commerce"
+        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+        icon: fas fa-shopping-cart #find more at https://fontawesome.com/icons
+      - title: "Responsive Design"
+        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+        icon: fas fa-laptop
+      - title: "[Markdown](https://en.wikipedia.org/wiki/Markdown)"
+        desc: "Your description here, full **Markdown** support"
+        icon: fab fa-markdown
+  
+#    title: "HELLO. MY NAME IS SHAM NASEER!"
+ #   text: "Hello & thank you for visiting my portfolio."
+  #  section: services
+   #   - title: "Griffith University"
+    #    desc: "Bachelor of Government and international relations (2017)"
+#        icon: assets/img/Griffith.png #find more at https://fontawesome.com/icons
+ #     - title: "Sham Naseer"
+  #      desc: "Data Analyst / International Liaison"
+   #     icon: assets/img/team/4.jpg
+    #  - title: "Asia Pacific University of Technology"
+     #   desc: "Masters in Data Science and Business Analytics (2022)"
+      #  icon: assets/img/APU.png
+
     
  #   people:
   #    - name: "Griffith University"
