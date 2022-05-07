@@ -31,6 +31,18 @@ en: &DEFAULT_EN
     
   
   services:
+    title: "HELLO. MY NAME IS SHAM NASEER!"
+    text: "Hello & thank you for visiting my portfolio."
+    section: services
+      - title: "Griffith University"
+        desc: "Bachelor of Government and international relations (2017)"
+        icon: assets/img/Griffith.png #find more at https://fontawesome.com/icons
+      - title: "Sham Naseer"
+        desc: "Data Analyst / International Liaison"
+        icon: assets/img/team/4.jpg
+      - title: "Asia Pacific University of Technology"
+        desc: "Masters in Data Science and Business Analytics (2022)"
+        icon: assets/img/APU.png
    # title: "Services"
    # text: "Lorem ipsum"
    # section: services
@@ -44,19 +56,6 @@ en: &DEFAULT_EN
     #  - title: "[Markdown](https://en.wikipedia.org/wiki/Markdown)"
     #    desc: "Your description here, full **Markdown** support"
     #    icon: fab fa-markdown
-    title: "HELLO. MY NAME IS SHAM NASEER!"
-    text: "Hello & thank you for visiting my portfolio."
-    section: services
-      - title: "Griffith University"
-        desc: "Bachelor of Government and international relations (2017)"
-        icon: assets/img/Griffith.png #find more at https://fontawesome.com/icons
-      - title: "Sham Naseer"
-        desc: "Data Analyst / International Liaison"
-        icon: assets/img/team/4.jpg
-      - title: "Asia Pacific University of Technology"
-        desc: "Masters in Data Science and Business Analytics (2022)"
-        icon: assets/img/APU.png
-    
     
  #   people:
   #    - name: "Griffith University"
@@ -74,9 +73,9 @@ en: &DEFAULT_EN
          # - url: https://linkedin.com/in/sham-naseer-b95866140/
           #  icon: fab fa-linkedin-in
             
-      - name: "Asia Pacific University of Technology"
-        role: "Masters in Data Science and Business Analytics"
-        image: assets/img/APU.png
+   #   - name: "Asia Pacific University of Technology"
+    #    role: "Masters in Data Science and Business Analytics"
+     #   image: assets/img/APU.png
 
   timeline:
     title: "Timeline"
