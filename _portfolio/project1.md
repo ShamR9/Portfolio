@@ -116,6 +116,20 @@ The library for the neural network modelling will be the nnet library. The tunin
 To evaluate the models, various aspects of the model will be explored. The most basic evaluation method do be used is the accuracy metric which simply outputs the percentage of the correct predictions from the total number of predictions. However, the accuracy measure may prove to be a bit misleading as it can output more true positives compared to true negatives if it contributes to the accuracy metric to become larger. Hence along with the accuracy, the sensitivity and specificity metric will also be used to compare the percentage of true positives and true negatives. As it is difficult to compare the two specificity and sensitivity metric objectively, the F-measure will be used to compare it. However, as the dataset has already been balanced for this particular dataset, it is unlikely for the model to be more biased towards one class over the other (Brownlee 2020). 
 The final evaluation metric to be used for this study is the Receiver Operating Characteristics (ROC) Curve and the Area Under the receiver operating characteristics Curve (AUC). The ROC is a probability curve that displays the false positive rate against the false negative rate at various probability thresholds (Narkhede, 2018). The AUC, utilising the ROC outputs the measure of separability of the classifier. Hence, the higher the AUC the better the classifier, which will be a metric used to measure the best model in this study. 
 
+# Data Preparation
+
+## Initial EDA
+
+```R
+library(dplyr)
+library(DataExplorer)
+library(mice)
+library(VIM)
+library(missForest)
+```
+
+
+
 
 {:.list-inline}
 - Date: December 2021
