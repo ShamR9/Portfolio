@@ -97,7 +97,7 @@ en: &DEFAULT_EN
         logo: assets/img/clients/Excel.png
       - title: "Plaaceholder.jpg"
       #  url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/Placeholder.jpg
+        logo: assets/img/clients/Plaaceholder.jpg
       - title: "Tableau"
       #  url: https://github.com/raviriley/agency-jekyll-theme
         logo: assets/img/clients/Tableau.jpg
