@@ -143,7 +143,10 @@ levels(df$satisfaction)
 ```
 All the character variables in the dataset are converted to factor variables using the factor command. As these values are stored back in the dataset, the structure of dataset is checked again through the str function. To further analyze the factors to check for consistency of the data, the levels of the factor variables are also checked to assess if missing values are classified as a level. 
 
-![alt text](https://github.com/ShamR9/DataScience/blob/main/FlightSatisfaction/Images/1.png "Factorised data")
+Figure 1: 
+![alt text][logo]
+
+[logo]: https://github.com/ShamR9/DataScience/blob/main/FlightSatisfaction/Images/1.png "Factorised data"
 
 After factorization is completed, all the character variables can be observed as factors with either 2 or 3 levels in each variable.
 
@@ -169,7 +172,10 @@ plot_missing(Final_imputed_df)
 
 To impute the missing values for this project the MICE library is used with the m value (Number of multiple imputations) set for 3. After the mice imputation is initialized the complete function is used to fill in the missing data and return the completed data. After imputation is completed the missing value plot is once again plotted to check the new imputed data for missing values 
 
-![alt text](https://github.com/ShamR9/DataScience/blob/main/FlightSatisfaction/Images/2.png "missing data")
+Figure 2: 
+![alt text][logo2]
+
+[logo2]: https://github.com/ShamR9/DataScience/blob/main/FlightSatisfaction/Images/2.png "missing data"
 
 There are no missing data after data has been imputed. 
 
