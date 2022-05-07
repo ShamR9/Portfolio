@@ -423,7 +423,185 @@ The final step was saving the model to be loaded again to do the final evaluatio
 
 ### Evaluation
 
+The final stage of Machine Learning implementation is to compare different models and identify the best performing model. For the purpose of this study, accuracy, f_measure, ROC and AUC were used to compare and evaluate the different models. 
 
+```R
+library(pROC)
+library(yardstick)
+library(caret)
+
+df <- test_set
+```
+
+As done for the modelling, first the libraries and dataset are loaded to the program. The libraries to be used for evaluating the models are pROC for displaying the ROC curve and calculate the AUC for each model. Furthermore, yardstick library will be used to obtain the F_Measure and Caret Library will be used to get predictions from the models. 
+
+Furthermore, as we will be using data that the model was not trained on before, and to maintain consistency and fair evaluation, same test data will be used for all the models. 
+
+```R
+naivemodel <- readRDS("naivemodel.rds")
+dtmodel <- readRDS("dtmodel.rds")
+annmodel <- readRDS("annmodel.rds")
+
+
+##Prediction Naive Bayes
+nmprob = predict(naivemodel,newdata = df[,-24],type='prob')
+nmclass = predict(naivemodel,newdata = df[,-24],type='raw')
+
+##Prediction Decision Trees
+dtprob = predict(dtmodel,newdata = df[,-24],type='prob')
+dtclass = predict(dtmodel,newdata = df[,-24],type='raw')
+
+##Prediction Decision Trees
+annprob = predict(annmodel,newdata = df[,-24],type='prob')
+annclass = predict(annmodel,newdata = df[,-24],type='raw')
+```
+
+As all models were saved after being modeled for evaluation, the saved models were loaded to the program once again using readRDS function and saved into variables indicating the model name. After the models are loaded, each model is used to obtain predictions in both probability and class format. By default all classifications have a threshold of 0.5 for probability. 
+
+```R
+##Caret Confusion Matrix Evaluation NB
+confusionMatrix(df$satisfaction_satisfied,nmclass)
+
+##Caret Confusion Matrix Evaluation DT
+confusionMatrix(df$satisfaction_satisfied,dtclass)
+
+##Caret Confusion Matrix Evaluation ANN
+confusionMatrix(df$satisfaction_satisfied,annclass)
+```
+
+After all models obtain their predictions, a confusion matrix is created using the caret confusionMatrix tool that displays the analysis of the model performance. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/16.png "Logo Title Text 1")
+
+The first model, Naïve Bayes model performance shows an accuracy score of 0.86 with a sensitivity score of 0.91 and specificity score of 0.8199. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/17.png "Logo Title Text 1")
+
+The Decision Tree model has performed better than the Naïve Bayes Model with an accuracy of 0.911 and a more balanced sensitivity to specificity ration of 0.90 and 0.92 respectively. Hence overall this model can be said to be a better performing model compared to the Naïve Bayes Model. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/18.png "Logo Title Text 1")
+
+The final model, the Artificial Neural Network ANN model has also performed at a similar level to the Decision Tree model. However, the ANN model has a slightly higher accuracy than the Decision Tree model with 0.919 accuracy. The sensitivity and specificity for the ANN model is also in the 90s. to further evaluate the accuracy, the F score will be measured for each model. 
+
+| Model | Acuuracy | Sensitivity | Specificity |
+|------|-----|-----|-----|
+| Naive Bayes | 0.8602 | 0.9121 | 0.8199 |
+| Decision Tree | 0.9117 | 0.9024 | 0.9214 |
+| Artificial Neural Network | 0.9186 | 0.9037 | 0.9346 |
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/19.png "Logo Title Text 1")
+
+As seen in the chart, it can be observed that the Naïve Bayes model has a more unbalanced prediction as it has a greater sensitivity compared to specificity. Both Decision Tree model and ANN model perform at a similar level in terms of accuracy, sensitivity and specificity. 
+
+```R
+##Yardstick F1 score (NBM)
+nbeval = data.frame(df$satisfaction_satisfied)
+nbeval$cl = nmclass
+nbeval$pr = nmprob[,1]
+
+
+f_meas(data = nbeval, estimate = nbeval$cl, truth = nbeval$df.satisfaction_satisfied)
+
+##Yardstick F1 score (DTM)
+dteval = data.frame(df$satisfaction_satisfied)
+dteval$cl = dtclass
+dteval$pr = dtprob[,1]
+
+
+f_meas(data = dteval, estimate = dteval$cl, truth = dteval$df.satisfaction_satisfied)
+
+##Yardstick F1 score (ANNM)
+anneval = data.frame(df$satisfaction_satisfied)
+anneval$cl = annclass
+anneval$pr = annprob[,1]
+
+
+f_meas(data = anneval, estimate = anneval$cl, truth = anneval$df.satisfaction_satisfied)
+```
+
+To evaluate the f measure from yardstick library first the predictions are inserted into a dataframe for easier processing. The F scores for each model is listed below. 
+
+| Model | F_Measure |
+|-----|-----|
+| Naive Bayes | 0.851 |
+| Decision Tree | 0.913 |
+| Artificial Neural Network | 0.920 |
+
+As observed by the tables of F measure, Artificial Neural Network has the best F_Measure when compared to all other models.
+
+```R
+plot1<- roc(df$satisfaction_satisfied, nbeval$pr, plot=TRUE, legacy.axes=TRUE,main="Naive Bayes ROC", percent=TRUE, 
+            xlab = 'False Positive Percentage', ylab = 'True positive percentage', print.auc = TRUE,col = 'red')
+
+plot2<-roc(df$satisfaction_satisfied, dteval$pr, plot=TRUE, legacy.axes=TRUE, percent=TRUE,main="Decision Tree ROC", 
+           xlab = 'False Positive Percentage', ylab = 'True positive percentage', print.auc = TRUE,col='blue')
+
+plot3<-roc(df$satisfaction_satisfied, anneval$pr, plot=TRUE, legacy.axes=TRUE, percent=TRUE, main="ANN ROC", 
+           xlab = 'False Positive Percentage', ylab = 'True positive percentage', print.auc = TRUE,col='green')
+```
+
+The last evaluation metric, ROC and AUC was plotted using pROC library and print.auc parameter was set to TRUE to allow the plot to display the value of auc for each plot. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/20.png "Logo Title Text 1")
+
+The first plot of Naïve Bayes ROC shows a steady curve with an AUC of 95.1%
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/21.png "Logo Title Text 1")
+
+The Decision Tree has a sharper curve compared to the Naïve Bayes model with a better AUC of 95.9%.
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/22.png "Logo Title Text 1")
+
+The final ANN Model has the best AUC with 97.8%. To compare the shape of the curves the three plots will be plotted together to evaluate it on a more graphical manner. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/23.png "Logo Title Text 1")
+
+As seen in the AUC, once again it can be observed that the ANN, in green colour has the sharpest curve when compared to the other two models. Hence we can conclude that based on the accuracy, F measure, ROC and AUC, the Artificial Neural Network model has outperformed the Naïve Bayes model and the Decision Tree Model. The least significant of the three models is the simplest Naïve Bayes Model with Decision Tree model performing at a close level to the Artificial Neural Network Model. 
+
+```R
+importance <- varImp(annmodel, scale=FALSE)
+importance
+plot(importance)
+```
+
+One of the objectives set for the study was to identify the most significant variables that contribute to customer satisfaction. Hence the most significant factors for the best performing model, the ANN was identified by using the varImp from caret library and plotted to visualize the features. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/24.png "Logo Title Text 1")
+
+The plot reveals that the most important feature determining customer satisfaction is inflight wifi service followed by travelers travelling for personal purposes. The timing of the flight as well as gate location also plays an important factor in determining the customer satisfaction. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/25.png "Logo Title Text 1")
+
+When comparing the implantation of the model against other implementations, we can observe that the previous implementations of the Random Forest and Decision Trees by other data scientists yielded higher accuracies where as logistic regression implemented by Akhter, (2021) underperformed compared to the current implementation. The main reason for the underperformance of the ANN model could be the use of a sample of the dataset rather than using the entire dataset for the training and testing of the model. 
+
+## Conclusion
+
+Due to the emerging challenges in the aviation industry due to the pandemic, airlines are having to compete in a depleted market for passengers. Increasing customer satisfaction was identified as a way to compete in this competitive market. To predict customer satisfaction and provide insight for airlines to improve their services, this study implemented a Naïve Bayes Classifier, a Decision Tree model, and an Artificial Neural Network model to predict customer satisfaction. After implementation and tuning of the model, the models were evaluated based on their accuracy, F measure and AUC. The three metric used for evaluation showed that the Artificial Neural Network model performed the best with the highest accuracy, F measure and AUC among the three models with the Decision Tree model performing closely. The Naïve Bayes model performed the worst among the three model. The ANN model also revealed the most significant features among the indicators with the inflight Wi-Fi being the most significant factor. When these models were compared with other models implemented using the same dataset, the model performed on average lower in terms of accuracy when compared to other models such as Decision Trees, and Random Forest models. However, the model did perform better than the Logistic Regression model. 
+When analysing the reason for the model to perform weaker than other implementations, the most significant factor is that for this model the entire dataset was not used in training the models as for this study a sample of the dataset was used to optimise the training time. Hence, for further study, it is recommended that the entire dataset is used and analysed as this may improve the overall accuracy of the model.
+Lastly, in terms of business application of the findings, it is recommended that airlines focus their attention on the most significant predictors that have been identified through this model. Namely airlines should focus on the overall quality of Wi-Fi in airplanes as well as ensuring that the scheduling of flights are convenient for the customers instead of having flights at odd times of the day, especially flights with large number of passengers. It is also recommended that the airlines generally focus on improving the IT infrastructure of the airlines as passengers found ease of online boarding to be a significant factor in determining their overall satisfaction of the model as well. 
+
+## References
+
+An, M. & Noh, Y. (2009). Airline customer satisfaction and loyalty: impact of in-flight service quality, https://doi.org/10.1007/s11628-009-0068-4
+Aitkenhead, M. J. (2008). A co-evolving decision tree classification method. Expert Systems with Applications, 34(1), 18–25. https://doi.org/10.1016/j.eswa.2006.08.008
+Akhter, Z. (2021). Airline passenger satisfaction classification. [Kaggle Notedbook]. Retrieved from https://www.kaggle.com/chronicenigma/airline-passenger-satisfaction-classification
+Alvin, T. P. (2020). Predicting Satisfaction of Airline Passengers with Classification. Retrieved from https://towardsdatascience.com/predicting-satisfaction-of-airline-passengers-with-classification-76f1516e1d16 
+Booma, P. M. & Wong, A. (2020). Optimising e-commerce customer satisfaction with machine learning. Journal of Physics Conference Series 1712. 10.1088/1742-6596/1712/1/012044
+Bouwer, J., Saxon, S. & Wattkamp, N. (2021), Back to the future? Airlines sector poised for change post-COVID-19. https://www.mckinsey.com/industries/travel-logistics-and-infrastructure/our-insights/back-to-the-future-airline-sector-poised-for-change-post-covid-19
+Brownlee. J. (2020). How to Calculate Precision, Recall, and F-Measure for Imbalanced Classification. Retrieved from https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/
+Cho, K.-H., & Bae, H.-S. (2017). Convergence study of the in-flight meal quality on customer satisfaction, brand image and brand loyalty in airlines. Journal of the Korea Convergence Society , 8 (12), 317–327. https://doi.org/10.15207/JKCS.2017.8.12.317
+Clemes, M. D., Gan, C., Kao, T. & Choong, M. (2008). An empirical analysis of customer satisfaction in international air travel. Innovative Marketing 4(2). 
+Curtis, T., Rhoades, D. L. & Waguespack, B. P. (2012). Satisfaction with Airline Service Quality: Familiarity Breeds Contempt. International Journal of Aviation Management, 1(4). https://doi.org/10.1504/ IJAM.2012.050472
+Hong, S. & Lynn, H.S. (2020). Accuracy of random-forest-based imputation of missing data in the presence of non-normality, non-linearity, and interaction. BMC Medical Research Methodology 20(199). https://doi.org/10.1186/s12874-020-01080-1
+John, D. (2016). Passenger Satisfaction (2.0) [Kaggle CSV dataset]. Retrieved from https://www.kaggle.com/johndddddd/customer-satisfaction/version/2
+Kumar, S.& Zymbler, M. (2019). A machine learning approach to analyze customer satisfaction from airline tweets.  Journal of Big Data 6(62). https://doi.org/10.1186/s40537-019-0224-1
+Kwon, S. J. (Ed.). (2011). Artificial neural networks (Ser. Mathematics research developments). Nova Science. Retrieved December 11, 2021.
+Loukas, S. (2020). Everything you need to know about Min-Max normalization: A Python tutorial. Retrieved from https://towardsdatascience.com/everything-you-need-to-know-about-min-max-normalization-in-python-b79592732b79
+Mahmud, A., Jusoff, K. & Hadijah, S. (2013). The Effect of Service Quality and Price on Satisfaction and Loyalty of Customer of Commercial Flight Service Industry. World Applied Sciences Journal, 23(3), 354-359. 10.5829/idosi.wasj.2013.23.03.13052
+Narkhede, S. (2018). Understanding AUC - ROC Curve. Retrieved from https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5
+Prabhakaran, S. (2018). Caret Package – A Practical Guide to Machine Learning in R. Retrieved from https://www.machinelearningplus.com/machine-learning/caret-package/
+Ruan, D. (2006). Applied artificial intelligence : proceedings of the 7th international flins conference, genova, italy, 29-31 august 2006. World Scientific. Retrieved December 11, 2021.
+Vazhavelil, T. (2020). How can the airline industry prepare for revival post COVID-19. https://www.wipro.com/blogs/thomas-vazhavelil/how-can-the-airline-industry-prepare-for-revival-post-covid-19/
 
 {:.list-inline}
 - Date: December 2021
