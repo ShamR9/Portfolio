@@ -144,9 +144,8 @@ levels(df$satisfaction)
 All the character variables in the dataset are converted to factor variables using the factor command. As these values are stored back in the dataset, the structure of dataset is checked again through the str function. To further analyze the factors to check for consistency of the data, the levels of the factor variables are also checked to assess if missing values are classified as a level. 
 
 Figure 1: 
-![alt text][logo]
 
-[logo]: https://github.com/ShamR9/DataScience/blob/main/FlightSatisfaction/Images/1.png "Factorised data"
+image: assets/img/portfolio/Planes/1.png
 
 After factorization is completed, all the character variables can be observed as factors with either 2 or 3 levels in each variable.
 
@@ -173,11 +172,23 @@ plot_missing(Final_imputed_df)
 To impute the missing values for this project the MICE library is used with the m value (Number of multiple imputations) set for 3. After the mice imputation is initialized the complete function is used to fill in the missing data and return the completed data. After imputation is completed the missing value plot is once again plotted to check the new imputed data for missing values 
 
 Figure 2: 
-![alt text][logo2]
 
-[logo2]: https://github.com/ShamR9/DataScience/blob/main/FlightSatisfaction/Images/2.png "missing data"
+image: assets/img/portfolio/Planes/2.png
 
 There are no missing data after data has been imputed. 
+
+```R
+library(fastDummies)
+
+dummied <- dummy_cols(ddf, remove_first_dummy = TRUE)
+
+data <- dummied[c(-2,-3,-5,-6,-24)]
+str(data)
+```
+
+To dummy encode the data, fastDummies library is loaded and a new data frame named dummied is created to store the dummy encoded data for all categorical variables. The remove_first_dummy parameter is set to True, which removes creates columns for 1 – number of levels. After encoding, the factor variables are removed leaving the data frame full of integer values and is saved in a dataframe named data. To ensure that only integer values are present in the dataset the structure is checked. 
+
+
 
 {:.list-inline}
 - Date: December 2021
