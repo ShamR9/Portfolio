@@ -83,18 +83,24 @@ en: &DEFAULT_EN
     max-height: 100px
     horizontal-scrolling: "" #"yes/no"
     list:
-      - title: "envato"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/envato.jpg
-      - title: "designmodo"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/designmodo.jpg
-      - title: "themeforest"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/themeforest.jpg
-      - title: "Creative Market"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/creative-market.jpg
+      - title: "Python"
+ #      url: https://github.com/raviriley/agency-jekyll-theme
+        logo: assets/img/clients/Python.png
+      - title: "R"
+       # url: https://github.com/raviriley/agency-jekyll-theme
+        logo: assets/img/clients/R.jpg
+      - title: "SQL"
+      #  url: https://github.com/raviriley/agency-jekyll-theme
+        logo: assets/img/clients/SQL.jpg
+      - title: "Excel"
+      #  url: https://github.com/raviriley/agency-jekyll-theme
+        logo: assets/img/clients/Excel.png
+      - title: "Tableau"
+      #  url: https://github.com/raviriley/agency-jekyll-theme
+        logo: assets/img/clients/Tableau.jpg
+      - title: "Power BI"
+      #  url: https://github.com/raviriley/agency-jekyll-theme
+        logo: assets/img/clients/PowerBI.png
 
   team:
     title: "HELLO. MY NAME IS SHAM NASEER"
@@ -119,7 +125,7 @@ en: &DEFAULT_EN
             
       - name: "Asia Pacific University of Technology"
         role: "Masters in Data Science and Business Analytics"
-        image: assets/img/AOU.png
+        image: assets/img/APU.png
 
 
 
