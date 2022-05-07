@@ -57,30 +57,18 @@ The dataset to be used for this project is a US airline passenger satisfaction s
 | 10 |	Departure/Arrival time convenient |	Numeric |
 | 11 |	Food and drink |	Numeric |
 | 12 |	Gate location | Numeric |
-
-13	Inflight wifi service	(Numeric)
-
-14	Inflight Entertainment	(Numeric)
-
-15	Online support	(Numeric)
-
-16	Ease of Online Booking	(Numeric)
-
-17	On-board service	(Numeric)
-
-18	Leg room service	(Numeric)
-
-19	Baggage handling	(Numeric)
-
-20	Checkin service	(Numeric)
-
-21	Cleanliness	(Numeric)
-
-22	Online boarding	(Numeric)
-
-23	Departure Delay in minutes	(Numeric)
-
-24	Arrival Delay in minutes	(Numeric)
+| 13 |	Inflight wifi service |	Numeric |
+| 14 |	Inflight Entertainment |	Numeric |
+| 15 |	Online support	| Numeric |
+| 16	| Ease of Online Booking	| Numeric |
+| 17 |	On-board service |	Numeric |
+| 18	| Leg room service	| Numeric |
+| 19 |	Baggage handling	| Numeric |
+| 20 |	Checkin service |	Numeric |
+| 21 |	Cleanliness |	Numeric |
+| 22 |	Online boarding |	Numeric |
+| 23	| Departure Delay in minutes	| Numeric |
+| 24	| Arrival Delay in minutes	| Numeric |
 
 
 Exploratory Data Analysis & Data Pre-Processing
