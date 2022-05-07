@@ -44,9 +44,8 @@ en: &DEFAULT_EN
     #  - title: "[Markdown](https://en.wikipedia.org/wiki/Markdown)"
     #    desc: "Your description here, full **Markdown** support"
     #    icon: fab fa-markdown
-    title: "HELLO. MY NAME IS SHAM NASEER"
+    title: "HELLO. MY NAME IS SHAM NASEER!"
     text: "Hello & thank you for visiting my portfolio."
-    subtext: Thank you for visiting my portfolio and your interest. Here is a little bit about me.
     section: services
       - title: "Griffith University"
         desc: "Bachelor of Government and international relations (2017)"
