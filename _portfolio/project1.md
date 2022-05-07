@@ -145,7 +145,7 @@ All the character variables in the dataset are converted to factor variables usi
 
 Figure 1: 
 
-![alt text](https://github.com/ShamR9/Portfolio/blob/master/assets/img/portfolio/Planes/1.png "Logo Title Text 1")
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/1.png "Logo Title Text 1")
 
 After factorization is completed, all the character variables can be observed as factors with either 2 or 3 levels in each variable.
 
@@ -187,6 +187,45 @@ str(data)
 ```
 
 To dummy encode the data, fastDummies library is loaded and a new data frame named dummied is created to store the dummy encoded data for all categorical variables. The remove_first_dummy parameter is set to True, which removes creates columns for 1 – number of levels. After encoding, the factor variables are removed leaving the data frame full of integer values and is saved in a dataframe named data. To ensure that only integer values are present in the dataset the structure is checked. 
+
+![alt text](https://github.com/ShamR9/Portfolio/blob/master/assets/img/portfolio/Planes/3.png "Logo Title Text 1")
+
+After encoding is complete, we are left with a clean dataset with only integer variables. 
+
+```R
+#define Min-Max normalization function
+min_max_norm <- function(x) {
+  (x - min(x)) / (max(x) - min(x))
+}
+
+#apply Min-Max normalization to all the columns
+norm.data <- as.data.frame(lapply(data, min_max_norm))
+```
+
+One of the common problem faced during Machine Learning Modelling is having data that has not been normalized. This can lead to variables with large numeric values to be given unequal weight when compared to variables with smaller numeric values. After the Min-Max normalization is applied the data is stored in norm.data completing the pre-processing of data for modelling. This data frame will be renamed to df for simplicity of the modelling process.
+
+### Balancing
+
+```R
+satisfied <- which(norm.data$satisfaction_satisfied == 1)
+dissatisfied <- which(norm.data$satisfaction == 0)
+
+length(satisfied)
+length(dissatisfied)
+
+undersample <- sample(dissatisfied,length(satisfied))
+
+undersampled <- norm.data[c(undersample,satisfied),]
+
+library(ggplot2)
+
+ggplot(undersampled) + 
+  geom_bar(aes(x=satisfaction_satisfied,  alpha=0.5, fill='satisfaction'))
+```
+
+To do so firstly, the indices of the passengers in both classes are extracted through the which command and their length is checked to ensure that there are fewer satisfied passengers compared to dissatisfied passengers. After this, a random sample of the indices from the neutral or dissatisfied class of the same length as the satisfied class is extracted. This sample along with the satisfied class is compiled into a dataframe named undersampled is created and once again the data distribution for the classes are created to check for the balance.
+
+
 
 
 
