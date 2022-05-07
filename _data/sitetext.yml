@@ -81,7 +81,7 @@ en: &DEFAULT_EN
   clients:
     section: clients
     max-height: 75px
-    horizontal-scrolling: "" #"yes/no"
+    horizontal-scrolling: "yes" #"yes/no"
     list:
       - title: "Python"
  #      url: https://github.com/raviriley/agency-jekyll-theme
