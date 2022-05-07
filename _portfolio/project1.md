@@ -1,13 +1,13 @@
 ---
 title: Flight Customer Satisfaction
 subtitle: A Machine Learning Project to predict customer satisfaction for flight customers.
-image: assets/img/portfolio/plane.jpg
+image: assets/img/portfolio/Plane.jpg
 alt: Plane in the sky
 
 caption:
   title: Flight Customer Satisfaction
   subtitle: A Machine Learning Project to predict customer satisfaction for flight customers.
-  thumbnail: assets/img/portfolio/plane.jpg
+  thumbnail: assets/img/portfolio/Plane.jpg
 ---
 # Introduction
 
@@ -40,7 +40,7 @@ Due to the large dataset available for the problem at hand, the training time fo
 
 
 {:.list-inline}
-- Date: January 2017
-- Client: Threads
-- Category: Illustration
+- Date: December 2021
+- Assignment: Applied Machine Learning (Masters in Data Science and Business Analytics)
+- Category: Machine Learning
 
