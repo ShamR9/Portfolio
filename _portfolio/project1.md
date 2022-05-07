@@ -583,24 +583,43 @@ Lastly, in terms of business application of the findings, it is recommended that
 ## References
 
 An, M. & Noh, Y. (2009). Airline customer satisfaction and loyalty: impact of in-flight service quality, https://doi.org/10.1007/s11628-009-0068-4
+
 Aitkenhead, M. J. (2008). A co-evolving decision tree classification method. Expert Systems with Applications, 34(1), 18–25. https://doi.org/10.1016/j.eswa.2006.08.008
+
 Akhter, Z. (2021). Airline passenger satisfaction classification. [Kaggle Notedbook]. Retrieved from https://www.kaggle.com/chronicenigma/airline-passenger-satisfaction-classification
+
 Alvin, T. P. (2020). Predicting Satisfaction of Airline Passengers with Classification. Retrieved from https://towardsdatascience.com/predicting-satisfaction-of-airline-passengers-with-classification-76f1516e1d16 
+
 Booma, P. M. & Wong, A. (2020). Optimising e-commerce customer satisfaction with machine learning. Journal of Physics Conference Series 1712. 10.1088/1742-6596/1712/1/012044
+
 Bouwer, J., Saxon, S. & Wattkamp, N. (2021), Back to the future? Airlines sector poised for change post-COVID-19. https://www.mckinsey.com/industries/travel-logistics-and-infrastructure/our-insights/back-to-the-future-airline-sector-poised-for-change-post-covid-19
+
 Brownlee. J. (2020). How to Calculate Precision, Recall, and F-Measure for Imbalanced Classification. Retrieved from https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/
+
 Cho, K.-H., & Bae, H.-S. (2017). Convergence study of the in-flight meal quality on customer satisfaction, brand image and brand loyalty in airlines. Journal of the Korea Convergence Society , 8 (12), 317–327. https://doi.org/10.15207/JKCS.2017.8.12.317
+
 Clemes, M. D., Gan, C., Kao, T. & Choong, M. (2008). An empirical analysis of customer satisfaction in international air travel. Innovative Marketing 4(2). 
+
 Curtis, T., Rhoades, D. L. & Waguespack, B. P. (2012). Satisfaction with Airline Service Quality: Familiarity Breeds Contempt. International Journal of Aviation Management, 1(4). https://doi.org/10.1504/ IJAM.2012.050472
+
 Hong, S. & Lynn, H.S. (2020). Accuracy of random-forest-based imputation of missing data in the presence of non-normality, non-linearity, and interaction. BMC Medical Research Methodology 20(199). https://doi.org/10.1186/s12874-020-01080-1
+
 John, D. (2016). Passenger Satisfaction (2.0) [Kaggle CSV dataset]. Retrieved from https://www.kaggle.com/johndddddd/customer-satisfaction/version/2
+
 Kumar, S.& Zymbler, M. (2019). A machine learning approach to analyze customer satisfaction from airline tweets.  Journal of Big Data 6(62). https://doi.org/10.1186/s40537-019-0224-1
+
 Kwon, S. J. (Ed.). (2011). Artificial neural networks (Ser. Mathematics research developments). Nova Science. Retrieved December 11, 2021.
+
 Loukas, S. (2020). Everything you need to know about Min-Max normalization: A Python tutorial. Retrieved from https://towardsdatascience.com/everything-you-need-to-know-about-min-max-normalization-in-python-b79592732b79
+
 Mahmud, A., Jusoff, K. & Hadijah, S. (2013). The Effect of Service Quality and Price on Satisfaction and Loyalty of Customer of Commercial Flight Service Industry. World Applied Sciences Journal, 23(3), 354-359. 10.5829/idosi.wasj.2013.23.03.13052
+
 Narkhede, S. (2018). Understanding AUC - ROC Curve. Retrieved from https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5
+
 Prabhakaran, S. (2018). Caret Package – A Practical Guide to Machine Learning in R. Retrieved from https://www.machinelearningplus.com/machine-learning/caret-package/
+
 Ruan, D. (2006). Applied artificial intelligence : proceedings of the 7th international flins conference, genova, italy, 29-31 august 2006. World Scientific. Retrieved December 11, 2021.
+
 Vazhavelil, T. (2020). How can the airline industry prepare for revival post COVID-19. https://www.wipro.com/blogs/thomas-vazhavelil/how-can-the-airline-industry-prepare-for-revival-post-covid-19/
 
 {:.list-inline}
