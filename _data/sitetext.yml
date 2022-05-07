@@ -80,7 +80,7 @@ en: &DEFAULT_EN
 
   clients:
     section: clients
-    max-height: 100px
+    max-height: 75px
     horizontal-scrolling: "" #"yes/no"
     list:
       - title: "Python"
