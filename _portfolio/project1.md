@@ -43,29 +43,20 @@ One of the most important steps to implement a Machine Learning algorithm for pr
 The dataset to be used for this project is a US airline passenger satisfaction survey conducted in 2015 (John, 2016). This survey has a total of 129,880 observations. Due to the large size of the observations, this dataset is ideal for modelling Machine Learning algorithms as it will have sufficient data for the model to train and validate the model. The dataset contains 24 variables including the ID variable, which is a unique ID for each passenger that took part in the survey, hence will be redundant for any ML modelling. Majority of the survey variables are numeric variables with 5 string variables in the dataset. The details of all variables including the label and data type can be found in the table below. 
 
 
-1	id	(Numeric)
-
-2	satisfaction_v2	(Character)
-
-3	Gender	(Character)
-
-4	Customer Type	(Character)
-
-5	Age	(Numeric)
-
-6	Type of Travel	(Character)
-
-7	Class	(Character)
-
-8	Flight Distance	(Numeric)
-
-9	Seat comfort	(Numeric)
-
-10	Departure/Arrival time convenient	(Numeric)
-
-11	Food and drink	(Numeric)
-
-12	Gate location	(Numeric)
+| No | Field | Type |
+|----|-------|------|
+|1	| id	| Numeric |
+| 2 |	satisfaction_v2 |	Character |
+| 3 |	Gender |	Character |
+| 4 |	Customer Type |	Character |
+| 5 |	Age |	Numeric |
+| 6 |	Type of Travel |	Character |
+| 7 |	Class |	Character |
+| 8 |	Flight Distance |	Numeric |
+| 9 | Seat comfort | Numeric |
+| 10 |	Departure/Arrival time convenient |	Numeric |
+| 11 |	Food and drink |	Numeric |
+| 12 |	Gate location | Numeric |
 
 13	Inflight wifi service	(Numeric)
 
@@ -127,6 +118,19 @@ library(mice)
 library(VIM)
 library(missForest)
 ```
+The Data-preparation begins by importing data cleaning libraries such as dplyr, mice, VIM and missForest as well as data exploration library DataExplorer to understand the data better. 
+
+```R
+'reading data'
+
+df <- read.csv ('Full_DS.csv', header=T) 
+
+View(df)
+str(df)
+summary(df)
+```
+
+
 
 
 
