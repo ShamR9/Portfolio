@@ -171,9 +171,9 @@ plot_missing(Final_imputed_df)
 
 To impute the missing values for this project the MICE library is used with the m value (Number of multiple imputations) set for 3. After the mice imputation is initialized the complete function is used to fill in the missing data and return the completed data. After imputation is completed the missing value plot is once again plotted to check the new imputed data for missing values 
 
+Figure 2
 
-
-![alt text](https://github.com/ShamR9/Portfolio/blob/master/assets/img/portfolio/Planes/2.png "Logo Title Text 1")
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/2.png "Logo Title Text 1")
 
 There are no missing data after data has been imputed. 
 
@@ -188,7 +188,9 @@ str(data)
 
 To dummy encode the data, fastDummies library is loaded and a new data frame named dummied is created to store the dummy encoded data for all categorical variables. The remove_first_dummy parameter is set to True, which removes creates columns for 1 – number of levels. After encoding, the factor variables are removed leaving the data frame full of integer values and is saved in a dataframe named data. To ensure that only integer values are present in the dataset the structure is checked. 
 
-![alt text](https://github.com/ShamR9/Portfolio/blob/master/assets/img/portfolio/Planes/3.png "Logo Title Text 1")
+Figure 3
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/3.png "Logo Title Text 1")
 
 After encoding is complete, we are left with a clean dataset with only integer variables. 
 
@@ -225,9 +227,78 @@ ggplot(undersampled) +
 
 To do so firstly, the indices of the passengers in both classes are extracted through the which command and their length is checked to ensure that there are fewer satisfied passengers compared to dissatisfied passengers. After this, a random sample of the indices from the neutral or dissatisfied class of the same length as the satisfied class is extracted. This sample along with the satisfied class is compiled into a dataframe named undersampled is created and once again the data distribution for the classes are created to check for the balance.
 
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/4.png "Logo Title Text 1")
 
+The new plot reveals that both classes are of equal length now. However, due to the large size of the dataset, training times for this model become unrealistically high for a project of this scale. For this reason, a sample of the full dataset will be extracted for all the models to be used uniformly for both testing and training of the model. The same test data will be used to evaluate and compare all the models. Both the test and training datasets are then exported to allow for consistency when being used for modelling. 
 
+```R
+set.seed(16)
 
+split = sample.split(df, SplitRatio = 0.1)
+ndf = subset(df, split = TRUE)
+
+split = sample.split(ndf, SplitRatio = 0.5)
+ndf = subset(df, split = TRUE)
+
+split = sample.split(ndf, SplitRatio = 0.7)
+training_set = subset(ndf, split = TRUE)
+test_set = subset(ndf, split = FALSE)
+```
+
+# Experimentation and modelling of ML models
+
+## Naive Bayes
+
+Naïve Bayes will be the first model that will be implemented for the prediction as it is the most simple of the three algorithms. The algorithm will be modelled through KlaR library and implemented in the caret train model using 10 fold cross validation on the training set. 
+
+```R
+install.packages('klaR')
+library("klaR")
+
+control <- trainControl(method="repeatedcv", number=10, repeats=5, search="random")
+```
+
+The most important steps that need to be taken before modeling of a Machine Learning algorithm is to set the validation techniques and parameters. For the decision tree model the trainControl from Caret library is used with repeated cross validation (repeatedcv). The number 10 indicates that the dataset was split across 10 divisions and repeated 5 times. The search parameter is set for random to ensure that the cp value to be tuned is not selected in a systematic manner, but randomly increasing the chances of finding the best value for the algorithm. 
+
+```R
+Naive.Flights = train(satisfaction_satisfied ~ ., 
+                      data=training_set, 
+                      method="nb", 
+                      trControl = control,
+                      tuneLength=10)
+```
+
+After setting the initial crossvalidation parameters the modelling of the naïve bayes algorithm takes place. The model is saved as Naïve.Flights. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/5.png "Logo Title Text 1")
+
+After the model is finished training the model is displayed to reveal details of the tuning and final model. A total of 3039 samples were available for training with 23 predictors and 2 classes. As repeated Cross validation took place, it evaluated the accuracy for just the usekernel (distribution type) parameter. However, there are other hyperparameters that were not tuned, namely the fL (Laplace Correction) and adjust (bandwidth adjustment) parameter. Hence, a second model will be created to tune the two remaining parameters. 
+
+```R
+nbgrid <-  expand.grid(fL = c(0,0.5,1), 
+                       usekernel = c(TRUE,FALSE),
+                       adjust = c(0.5,1,2,2.5,3))
+
+Naive.Flights = train(satisfaction_satisfied ~ ., 
+                      data=training_set, 
+                      method="nb", 
+                      trControl = control,
+                      tuneGrid=nbgrid)
+
+Naive.Flights
+
+plot(Naive.Flights)
+```
+
+Using the same repeated cross validation as the control, a tune grid is created and a list of parameters are entered to tune the algorithm based on these parameters. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/6.png "Logo Title Text 1")
+
+When the model is implemented, the model is tuned based on all possible combination of parameters based on the list of value entered in the tune grid. However, after analysing the accuracy of all possible combination, the model has concluded that the best model is the initial model with a change in adjust parameter to 2. 
+
+![alt text](https://raw.githubusercontent.com/ShamR9/Portfolio/master/assets/img/portfolio/Planes/7.png "Logo Title Text 1")
+
+When the model is plotted, it displays the outcome of the tuning based on whether the usekernel was Gaussian on Nonparametric. It shows that once again the best performing model was Nonparametric model. It also shows that the Laplace Correction has no influence on the accuracy of the model with the bandwitdth adjustment having a significant influence on the model in nonparametric model as it increases the accuracy as the value  is increased from 0.5 to 2. However, the model then experience a decrease in the accuracy after 2.0. 
 
 {:.list-inline}
 - Date: December 2021
