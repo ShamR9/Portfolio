@@ -83,7 +83,7 @@ en: &DEFAULT_EN
       - title: "Covid Pandemic"
         year: "2020-2022"
         desc: "The Covid-19 Pandemic forced me to change my work habits and schedule just like many others, and it was during this transition that I discovered, Udemy and Coursera where I took my first Data Science programs including the Google Data Analytics Certification."
-        image: assets/img/timeline/Covid.jpg
+        image: assets/img/timeline/Covid.jpeg
         alt:
       - title: "Masters Degree"
         year: "2021-2022"
