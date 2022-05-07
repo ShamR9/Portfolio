@@ -145,7 +145,7 @@ All the character variables in the dataset are converted to factor variables usi
 
 Figure 1: 
 
-image: assets/img/portfolio/Planes/1.png
+![alt text](https://github.com/ShamR9/Portfolio/blob/master/assets/img/portfolio/Planes/1.png "Logo Title Text 1")
 
 After factorization is completed, all the character variables can be observed as factors with either 2 or 3 levels in each variable.
 
@@ -171,9 +171,9 @@ plot_missing(Final_imputed_df)
 
 To impute the missing values for this project the MICE library is used with the m value (Number of multiple imputations) set for 3. After the mice imputation is initialized the complete function is used to fill in the missing data and return the completed data. After imputation is completed the missing value plot is once again plotted to check the new imputed data for missing values 
 
-Figure 2: 
 
-image: assets/img/portfolio/Planes/2.png
+
+![alt text](https://github.com/ShamR9/Portfolio/blob/master/assets/img/portfolio/Planes/2.png "Logo Title Text 1")
 
 There are no missing data after data has been imputed. 
 
