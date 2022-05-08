@@ -622,6 +622,10 @@ Ruan, D. (2006). Applied artificial intelligence : proceedings of the 7th intern
 
 Vazhavelil, T. (2020). How can the airline industry prepare for revival post COVID-19. https://www.wipro.com/blogs/thomas-vazhavelil/how-can-the-airline-industry-prepare-for-revival-post-covid-19/
 
+
+[Github repo](https://github.com/ShamR9/DataScience/tree/main/FlightSatisfaction)
+
+
 {:.list-inline}
 - Date: December 2021
 - Assignment: Applied Machine Learning (Masters in Data Science and Business Analytics)
